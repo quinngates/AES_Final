@@ -292,6 +292,14 @@ def genKey(n):
         word.append(random.randint(0,255))
     return word
 
+def key_maker(inp):
+    while len(inp) < 16:
+        inp += " "
+    arr = []
+    for e in range(16):
+        arr.append(phrase(inp[e]))
+    return arr
+
 def cyphr(inp, word, nr):
     state = create_state(inp,4)
     state = add_round_key(state,word[0:4],4)
@@ -324,10 +332,11 @@ def invCyphr(inp, word, nr):
     state = pack_state(state,4)
     return state
 
-def main(k = genKey(16)):
+def main():
+    k = key_maker(input("Enter a Key Phrase: "))
     #k = genKey(16)
     if len(k) != 16:
-        print("Incorrect Key Length. Key must be 16 elements long.")
+        print("Incorrect Key Length.")
     else:
         print("Using key: ")
         print(k)
@@ -357,3 +366,5 @@ def main(k = genKey(16)):
 print("Do your worst")
 main()
 
+#print(key_maker("Quinn"))
+#print(key_expansion(k,4,4,10))
