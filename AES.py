@@ -366,5 +366,16 @@ def main():
 print("Do your worst")
 main()
 
-#print(key_maker("Quinn"))
-#print(key_expansion(k,4,4,10))
+
+def test():
+    x = 0x3243f6a8885a308d313198a2e0370734
+    key = key_expansion([0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c],4,4,10)
+    print(hex(x))
+    print(key)
+    a = cyphr(x,key,10)
+    print(hex(a))
+    b = invCyphr(a,key,10)
+    print(hex(b))
+
+#test()
+
